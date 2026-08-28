@@ -9,7 +9,7 @@ subgroup_to_sigs <- list(
   HRD                     = c("SBS3"),
   Tobacco                 = c("SBS4"),
   MMR                     = c("SBS6", "SBS14", "SBS15", "SBS20", "SBS21", "SBS26", "SBS44"),
-  UV                      = c("SBS7a", "SBS7b", "SBS38"),
+  UV                      = c("SBS7a", "SBS7b", "SBS7c", "SBS7d", "SBS38"),
   POLE                    = c("SBS10a", "SBS10b")
 )
 
