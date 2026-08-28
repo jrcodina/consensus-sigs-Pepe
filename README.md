@@ -1,5 +1,3 @@
-**JUST TESTING**
-
 ## ConsensusSigs
 
 In this repository you will find the instructions to run ConsensusSigs. ConsensusSigs is a tool that combines 4 signature extraction algorithms - [SigProfiler](https://github.com/AlexandrovLab/SigProfilerAssignment), [SigMiner](https://github.com/ShixiangWang/sigminer), [deconstructSigs](https://github.com/raerose01/deconstructSigs) and [MESiCA](https://github.com/Adarya/MESiCA) - and performs an agreement metric.
