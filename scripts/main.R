@@ -11,10 +11,10 @@ option_list <- list(
   make_option(c("-m", "--maf"), type = "character", help = "Path to MAF input file", metavar = "FILE"),
   make_option(c("-o", "--output"), type = "character", help = "Output directory", metavar = "DIR"),
   make_option(c("-g", "--genomic-info"), type = "character", default = NULL, dest = "genomic_info",
-              help = "Target intervals for the assay: a GENIE genomic_information.txt (1-based inclusive) or a plain 3-column BED (0-based). Used by SATS to build the mutation opportunity matrix.", metavar = "FILE"),
+              help = "Target intervals for the assay: a GENIE genomic_information.txt (1-based inclusive) or a plain 3-column BED (0-based). Used to build the mutation opportunity matrix.", metavar = "FILE"),
   make_option(c("-c", "--clinical"), type = "character", default = NULL,
-              help = "Sample table with SAMPLE_ID and SEQ_ASSAY_ID, required only when --genomic-info covers more than one assay, so each sample gets its own panel's opportunity.", metavar = "FILE")
-)
+              help = "Sample table with SAMPLE_ID and SEQ_ASSAY_ID, required only when --genomic-info covers more than one assay, so each sample gets its own panel's opportunity.", metavar = "FILE"),
+  make_option(c("-ch", "--cohort"), type = "character", default = "CANCER_TYPE", help = "Column name of the variable to make the cohorts split.", metavar = "FILE"))
 
 opt_parser <- OptionParser(option_list = option_list)
 opt <- parse_args(opt_parser)
@@ -32,7 +32,8 @@ for (subdir in c("SigProfiler_Cosmic_V3.4", "SigMiner_Cosmic_V3.4", "deconstruct
 run_deconstructsigs(maf = opt$maf, results_dir = results_dir)
 run_sigminer_sigprofiler(maf = opt$maf, results_dir = results_dir)
 run_mesica(maf = opt$maf, results_dir = results_dir)
-run_sats(maf = opt$maf, results_dir = results_dir, genomic_info = opt$genomic_info, clinical = opt$clinical)
+run_sats(maf = opt$maf, results_dir = results_dir, genomic_info = opt$genomic_info, clinical = opt$clinical, cohort_column = opt$cohort_column)
+
 run_consensus_pipeline(results_dir = results_dir)
 
 cat("All signature assignments completed successfully.\n")
